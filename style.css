@@ -1,4 +1,3 @@
-/* Import Google Font - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 @font-face {
@@ -68,9 +67,6 @@ body{
   list-style: none;
   padding: 12px 15px;
 }
-.controls .row .icons{
-  width: 38%;
-}
 .controls .row .icons i{
   width: 50px;
   color: #adadad;
@@ -117,7 +113,7 @@ body{
 .controls .exchange{
   color: #adadad;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 30px;
   transition: transform 0.2s ease;
 }
 .controls i:active{
@@ -156,7 +152,7 @@ body{
     height: 200px;
   }
   .controls .row .icons{
-    display: none;
+    font-size: 20px;
   }
   .container button{
     padding: 13px;
@@ -166,7 +162,7 @@ body{
     font-size: 16px;
   }
   .controls .exchange{
-    font-size: 14px;
+    font-size: 20px;
   }
   .textOduduwa{
     font-size: large;
@@ -179,10 +175,18 @@ body{
   display: inline-block;
   border-bottom: 1px dotted black;
 }
-
+.tooltip:hover {
+   cursor: pointer;
+}
+.close {
+  color: red;
+}
+.close:hover {
+  cursor: pointer;
+}
 .tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
+  display: none;
+  width: 180px;
   background-color: black;
   color: #fff;
   text-align: center;
@@ -194,8 +198,8 @@ body{
   z-index: 1;
 }
 
-.tooltip:hover .tooltiptext {
-  visibility: visible;
+.block {
+  display: block !important;
 }
 
 /* Style the tab */
