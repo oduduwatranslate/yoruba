@@ -19,8 +19,27 @@
     <div class="container">
       <div class="wrapper">
         <div class="text-input">
-          <textarea spellcheck="false" id="textarea1" class="from-text" placeholder="Yorùbá(Latin) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kí l’orúkọ ẹ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kí l’orúkɔ ɛ" onkeyup="transliterate()"></textarea>
-          <textarea spellcheck="false" id="textarea2" readonly class="to-text" placeholder="ذشضثلاذشتضهخءضث خيضعيعصضش" onkeyup="transliterate()"></textarea>
+          <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'Yoruba')" id="defaultOpen"><img src="Yorubaland.jpg" alt="Yoruba" height="15px" width="15px" onclick="openTab(event, 'Yoruba')"> Yoruba</button>
+            <button class="tablinks" onclick="openTab(event, 'Nigeria')"><img src="Flag_of_Nigeria.png" alt="Nigeria" height="15px" width="15px" onclick="openTab(event, 'Nigeria')"> Nigeria</button>
+            <button class="tablinks" onclick="openTab(event, 'Benin')"><img src="Flag_of_Benin.png" alt="Benin" height="15px" width="15px" onclick="openTab(event, 'Benin')"> Benin</button>
+          </div>
+          
+          <div id="Yoruba" class="tabcontent">
+            <textarea spellcheck="false" id="textarea1" class="from-text" placeholder="Yorùbá(Latin) &#10; Kí l’orúkọ ẹ &#10; Kí l’orúkɔ ɛ" onkeyup="transliterate()"></textarea>
+          </div>
+          
+          <div id="Nigeria" class="tabcontent">
+            <textarea spellcheck="false" id="textarea1" class="from-text" placeholder="Yorùbá(Latin) Nigeria &#10; Kí l’orúkọ ẹ" onkeyup="transliterate()"></textarea>
+          </div>
+          
+          <div id="Benin" class="tabcontent">
+            <textarea spellcheck="false" id="textarea1" class="from-text" placeholder="Yorùbá(Latin) Benin &#10; Kí l’orúkɔ ɛ" onkeyup="transliterate()"></textarea>
+          </div>
+
+          <div>
+            <textarea spellcheck="false" id="textarea2" readonly class="to-text" placeholder="ذشضثلاذشتضهخءضث خيضعيعصضش" onkeyup="transliterate()"></textarea>
+          </div>
         </div>
         <ul class="controls">
           <li class="row from">
@@ -112,6 +131,22 @@
         return ret;
       }
 
+      function openTab(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+
+      // Get the element with id="defaultOpen" and click on it
+      document.getElementById("defaultOpen").click();
     </script>
   </body>
 </html>
