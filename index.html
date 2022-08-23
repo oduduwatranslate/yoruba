@@ -12,7 +12,6 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Font Awesome CDN Link for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   </head>
   <body>
@@ -51,47 +50,77 @@
         </div>
         <ul class="controls">
           <li class="row from">
-            <div class="icons">
+            <div class="icons tooltip" onmousedown="show1()">
               <i id="from" class="fas fa-copy" onclick="copyContent1()"></i>
+              <div id="tooltip1" onmouseout="hide()" class="tooltiptext">
+                <span>Yorùbá(Latin) Text Copied</span>
+              </div>
             </div>
           </li>
-          <li class="exchange"><i class="fas fa-exchange-alt" onclick="swapTransliteration()"></i></li>
+          <li class="exchange">
+            <i class="fas fa-exchange-alt" onclick="swapTransliteration()"></i>
+          </li>
           <li class="row to">
-            <div class="icons">
+            <div class="icons tooltip" onmousedown="show2()">
               <i id="to" class="fas fa-copy" onclick="copyContent2()"></i>
+              <div id="tooltip2" onmouseout="hide()" class="tooltiptext">
+                <span class="textOduduwa">ذشضثلاذشتضهخءضث خيضعيعصضش يشنر رقر</span>
+              </div>
             </div>
           </li>
         </ul>
       </div>
-      <button onclick="transliterate()">Translation</button>
+      <button onclick="transliterate()"><span>Tumọ</span> | <span class="textOduduwa">فعةر</span></button>
     </div>
     <script>
+      function hide() {
+        document.getElementById("tooltip1").classList.remove("block");
+        document.getElementById("tooltip2").classList.remove("block");
+      }
+      function show1() {
+        document.getElementById("tooltip1").classList.add("block");
+        var self = this;
+        setTimeout(function() {
+          self.hide();
+        },3000);
+      }
+      function show2() {
+        document.getElementById("tooltip2").classList.add("block");
+        var self = this;
+        setTimeout(function() {
+          self.hide();
+        },3000);
+      }
+      
       function swapTransliteration() {
-        if (!localStorage.getItem("direction") && localStorage.getItem("direction") == "latin2oduduwa") {
+        if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined ||  localStorage.getItem("direction") == "latin2oduduwa") {
           localStorage.setItem("direction", "oduduwa2latin");
           document.getElementById("textarea1").readOnly = true; 
-          document.getElementById("textarea2").readOnly = false; 
+          document.getElementById('textarea2').removeAttribute('readonly');
+          document.getElementById("textarea2").focus();
+          //document.getElementById("swapTooltip").value = "ذشضثلاذشتضهخءضث خيضعيعصضش -> Yorùbá(Latin)";
         } else if (localStorage.getItem("direction") == "oduduwa2latin") {
           localStorage.setItem("direction", "latin2oduduwa");
-          document.getElementById("textarea1").readOnly = false;
+          document.getElementById('textarea1').removeAttribute('readonly');
           document.getElementById("textarea2").readOnly = true;
+          document.getElementById("textarea1").focus();
+          //document.getElementById("swapTooltip").value = "Yorùbá(Latin) -> ذشضثلاذشتضهخءضث خيضعيعصضش";
         }
       }
 
       function copyContent1() {
-        // TODO Show message
         navigator.clipboard.writeText(document.getElementById("textarea1").value)
       }
 
       function copyContent2() {
-        // TODO Show message
         navigator.clipboard.writeText(document.getElementById("textarea2").value)
       }
 
       function transliterate() {
-        if (!localStorage.getItem("direction") || localStorage.getItem("direction") == "latin2oduduwa") {
-          var yorubaToArabic = {"`":"ذ","q":"ض","w":"ص","e":"ث","r":"ق","t":"ف","y":"غ","u":"ع","i":"ه","o":"خ","p":"ح","a":"ش","s":"س","d":"ي","f":"ب","gb":"ء","g":"ل","h":"ا","j":"ت","k":"ن","l":"م","'":"ك","’":"ك",";":"ط","\\":"\\","\"":"'","z":"ئ","sh":"ئ","ṣ":"ئ","x":"ء","ɛ":"ؤ","ẹ":"ؤ","c":"ؤ","ɔ":"ر","ọ":"ر","v":"ر","b":"لا","n":"ى","m":"ة","Q":"ض","W":"ص","E":"ث","R":"ق","T":"ف","Y":"غ","U":"ع","I":"ه","O":"خ","P":"ح","A":"ش","S":"س","D":"ي","F":"ب","GB":"ء","Gb":"ء","G":"ل","H":"ا","J":"ت","K":"ن","L":"م","Z":"ئ","Sh":"ئ","Ṣ":"ئ","X":"ء","Ɛ":"ؤ","Ẹ":"ؤ","C":"ؤ","Ɔ":"ر","Ọ":"ر","V":"ر","B":"لا","N":"ى","M":"ة",",":"و",".":"ز","/":"ظ","<":",",">":".","?":"؟",":":":","1":"١","2":"٢","3":"٣","4":"٤","5":"٥","6":"٦","7":"٧","8":"٨","9":"٩","0":"٠"," ":" ","-":"-","á":"ضش","Á":"ضش","à":"ذش","À":"ذش","é":"ضث","É":"ضث","è":"ذث","È":"ذث","ẹ́":"ضؤ","Ẹ́":"ضؤ","ẹ̀":"ذؤ","Ẹ̀":"ذؤ","í":"ضه","Í":"ضه","ì":"ذه","Ì":"ذه","ń":"ضى","Ń":"ضى","ǹ":"ذى","Ǹ":"ذى","ḿ":"ضة","Ḿ":"ضة","m̀":"ذة","M̀":"ذة","ó":"ضخ","Ó":"ضخ","ò":"ذخ","Ò":"ذخ","ọ́":"ضر","Ọ́":"ضر","ọ̀":"ذر","Ọ̀":"ذر","ú":"ضع","Ú":"ضع","ù":"ذع","Ù":"ذع","=":"=","+":"+","-":"-","÷":"÷","×":"×","(":"(",")":")"};
-          var middleTone = {"ā":"a","Ā":"a","ē":"e","Ē":"e","ẹ̄":"ẹ","Ẹ̄":"ẹ","ī":"i","Ī":"ī","n̄":"n","N̄":"n","N̄":"n","m̄":"m","M̄":"m","ō":"o","Ō":"o","ọ̄":"ọ","Ọ̄":"ọ","ū":"u","Ū":"u"};
+        if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined || localStorage.getItem("direction") == "latin2oduduwa") {
+          const yorubaToArabic = {"`":"ذ","q":"ض","w":"ص","e":"ث","r":"ق","t":"ف","y":"غ","u":"ع","i":"ه","o":"خ","p":"ح","a":"ش","s":"س","d":"ي","f":"ب","gb":"ء","g":"ل","h":"ا","j":"ت","k":"ن","l":"م","'":"ك","’":"ك",";":"ط","\\":"\\","\"":"'","z":"ئ","sh":"ئ","ṣ":"ئ","x":"ء","ɛ":"ؤ","ẹ":"ؤ","c":"ؤ","ɔ":"ر","ọ":"ر","v":"ر","b":"لا","n":"ى","m":"ة","Q":"ض","W":"ص","E":"ث","R":"ق","T":"ف","Y":"غ","U":"ع","I":"ه","O":"خ","P":"ح","A":"ش","S":"س","D":"ي","F":"ب","GB":"ء","Gb":"ء","G":"ل","H":"ا","J":"ت","K":"ن","L":"م","Z":"ئ","Sh":"ئ","Ṣ":"ئ","X":"ء","Ɛ":"ؤ","Ẹ":"ؤ","C":"ؤ","Ɔ":"ر","Ọ":"ر","V":"ر","B":"لا","N":"ى","M":"ة",",":"و",".":"ز","/":"ظ","<":",",">":".","?":"؟",":":":","1":"١","2":"٢","3":"٣","4":"٤","5":"٥","6":"٦","7":"٧","8":"٨","9":"٩","0":"٠"," ":" ","-":"-","á":"ضش","Á":"ضش","à":"ذش","À":"ذش","é":"ضث","É":"ضث","è":"ذث","È":"ذث","ẹ́":"ضؤ","Ẹ́":"ضؤ","ẹ̀":"ذؤ","Ẹ̀":"ذؤ","í":"ضه","Í":"ضه","ì":"ذه","Ì":"ذه","ń":"ضى","Ń":"ضى","ǹ":"ذى","Ǹ":"ذى","ḿ":"ضة","Ḿ":"ضة","m̀":"ذة","M̀":"ذة","ó":"ضخ","Ó":"ضخ","ò":"ذخ","Ò":"ذخ","ọ́":"ضر","Ọ́":"ضر","ọ̀":"ذر","Ọ̀":"ذر","ú":"ضع","Ú":"ضع","ù":"ذع","Ù":"ذع","=":"=","+":"+","-":"-","÷":"÷","×":"×","(":"(",")":")"};
+          const middleTone = {"ā":"a","Ā":"a","ē":"e","Ē":"e","ẹ̄":"ẹ","Ẹ̄":"ẹ","ī":"i","Ī":"ī","n̄":"n","N̄":"n","N̄":"n","m̄":"m","M̄":"m","ō":"o","Ō":"o","ọ̄":"ọ","Ọ̄":"ọ","ū":"u","Ū":"u"};
+
           let textYo = document.getElementById("textarea1").value;
           let resultAr = "";
           for (let u = 0; u < textYo.length; u++ ) {
@@ -114,19 +143,48 @@
               resultAr = resultAr + "\n";
             else if (textYo[u].indexOf("̄") > -1)
               resultAr = resultAr;
-            else if (textYo[u] != undefined && textYo[u] != null && textYo[u] != "" && textYo[u] != "undefined")
+            else if (yorubaToArabic[textYo[u]] != undefined && yorubaToArabic[textYo[u]] != null && textYo[u] != "")
               resultAr = resultAr + yorubaToArabic[textYo[u]];
           }
 
+          document.getElementById("textarea2").value = resultAr;
           document.getElementById("textarea2").innerHTML = resultAr;
 
         } else if (localStorage.getItem("direction") == "oduduwa2latin") {
-          var arabicToYoruba = {"٠":"0","١":"1","٢":"2","٣":"3","٤":"4","٥":"5","٦":"6","٧":"7","٨":"8","٩":"9","ذ":"◌̀","ض":"◌́","ص":"w","ث":"e","ق":"r","ف":"t","غ":"y","ع":"u","ه":"i","خ":"o","ح":"p","ش":"a","س":"s","ي":"d","ب":"f","ل":"g","ا":"h","ت":"j","ن":"k","م":"l","ك":"'","ط":";","'":"\"","ئ":"ṣ","ء":"gb","ؤ":"ẹ","ر":"ọ","لا":"b","ى":"n","ة":"m","و":",","ز":".","ظ":"/",",":"<",".":">","؟":"?",":":":"," ":" ","-":"-"};
+          const diacritics = {
+            a: ["à", "á", "ā"],
+            e: ["è", "é", "ē"],
+            ẹ: ["ẹ̀", "ẹ́", "ẹ̄"],
+            i: ["ì", "í", "ī"],
+            m: ["m̀", "ḿ", "m̄"],
+            n: ["ǹ", "ń", "n̄"],
+            o: ["ò", "ó", "ō"],
+            ọ: ["ọ̀", "ọ́", "ọ̄"],
+            u: ["ù", "ú", "ū"]
+          };
+          const arabicToYoruba = {"٠":"0","١":"1","٢":"2","٣":"3","٤":"4","٥":"5","٦":"6","٧":"7","٨":"8","٩":"9","ذ":"◌̀","ض":"◌́","ص":"w","ث":"e","ق":"r","ف":"t","غ":"y","ع":"u","ه":"i","خ":"o","ح":"p","ش":"a","س":"s","ي":"d","ب":"f","ل":"g","ا":"h","ت":"j","ن":"k","م":"l","ك":"'","ط":";","'":"\"","ئ":"ṣ","ء":"gb","ؤ":"ẹ","ر":"ọ","لا":"b","ى":"n","ة":"m","و":",","ز":".","ظ":"/",",":"<",".":">","؟":"?",":":":"," ":" ","=":"=","+":"+","-":"-","÷":"÷","×":"×","(":"(",")":")"};
+
           let resultYo = "";
-          let textAr = document.getElementById("textarea1").value;
+          let textAr = document.getElementById("textarea2").value;
           for (let u = 0; u < textAr.length; u++ ) {
-            resultYo = resultYo + yorubaToArabic[textAr[u]];
+            if (textAr[u] && (textAr[u].indexOf("ذ") > -1 || (textAr[(u+1)] && textAr[(u+1)].indexOf("̀") > -1)))
+              resultYo = resultYo + arabicToYoruba[textAr[u]];
+            else if (textAr[u] && textAr[u].indexOf("ذ") > -1)
+              resultYo = resultYo + arabicToYoruba["◌̀"] + arabicToYoruba[textAr[u]];
+            else if (textAr[u] && (textAr[u].indexOf("ض") > -1 || (textAr[(u+1)] && textAr[(u+1)].indexOf("́") > -1)))
+              resultYo = resultYo + arabicToYoruba[textAr[u]];
+            else if (textAr[u] && textAr[u].indexOf("ض") > -1)
+              resultYo = resultYo + arabicToYoruba["◌́"] + arabicToYoruba[textAr[u]];
+            else if (textAr[u].indexOf("\n") > -1)
+              resultYo = resultYo + "\n";
+            else if (diacritics[arabicToYoruba[textAr[u]]] && textAr[(u-1)] && textAr[(u-1)] == "ذ")
+              resultYo = resultYo.slice(0, -1).slice(0, -1) + diacritics[arabicToYoruba[textAr[u]]][0];
+            else if (diacritics[arabicToYoruba[textAr[u]]] && textAr[(u-1)] && textAr[(u-1)] == "ض")
+              resultYo = resultYo.slice(0, -1).slice(0, -1) + diacritics[arabicToYoruba[textAr[u]]][1];
+            else if (arabicToYoruba[textAr[u]] != undefined && arabicToYoruba[textAr[u]] != null && textAr[u] != "")
+              resultYo = resultYo + arabicToYoruba[textAr[u]];
           }
+          document.getElementById("textarea1").value = resultYo;
           document.getElementById("textarea1").innerHTML = resultYo;
         }        
       }
@@ -139,7 +197,7 @@
         return ret;
       }
 
-      function openTab(evt, cityName) {
+      function openTab(evt, localeName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
@@ -149,12 +207,16 @@
         for (i = 0; i < tablinks.length; i++) {
           tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
-        document.getElementById(cityName).style.display = "block";
+        document.getElementById(localeName).style.display = "block";
         evt.currentTarget.className += " active";
       }
 
       // Get the element with id="defaultOpen" and click on it
       document.getElementById("defaultOpen").click();
+      document.getElementById("textarea1").focus();
+      if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined || localStorage.getItem("direction") == "oduduwa2latin") {
+        localStorage.setItem("direction", "latin2oduduwa");
+      }
     </script>
   </body>
 </html>
