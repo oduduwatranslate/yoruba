@@ -24,7 +24,7 @@ body{
   background: #5372F0;
 }
 .container{
-  max-width: 1000px;
+  max-width: 750px;
   width: 100%;
   padding: 30px;
   background: #fff;
@@ -135,6 +135,11 @@ body{
   border-radius: 5px;
   background: #5372F0;
 }
+.textOduduwa{
+  font-family: 'Aebajiogbe Oduduwa';
+  font-size: x-large;
+  width: 60%;
+}
 
 @media (max-width: 660px){
   .container{
@@ -162,6 +167,10 @@ body{
   }
   .controls .exchange{
     font-size: 14px;
+  }
+  .textOduduwa{
+    font-size: large;
+    width: 20%;
   }
 }
 
@@ -191,6 +200,7 @@ body{
 
 /* Style the tab */
 .tab {
+  width: 100%;
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: grey;
@@ -203,7 +213,8 @@ body{
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 14px 16px;
+  padding: 2px;
+  margin: 2px;
   transition: 0.3s;
   font-size: 17px;
 }
