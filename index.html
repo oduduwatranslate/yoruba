@@ -18,27 +18,35 @@
   <body>
     <div class="container">
       <div class="wrapper">
+        <table class="tab">
+          <tr>
+            <td>
+              <button class="tablinks" onclick="openTab(event, 'Yoruba')" id="defaultOpen"><img src="Yorubaland.jpg" alt="Yoruba" height="25px" width="25px" onclick="openTab(event, 'Yoruba')"></button>
+            </td>
+            <td>
+              <button class="tablinks" onclick="openTab(event, 'Nigeria')"><img src="Flag_of_Nigeria.png" alt="Nigeria" height="25px" width="25px" onclick="openTab(event, 'Nigeria')"></button>
+            </td>
+            <td>
+              <button class="tablinks" onclick="openTab(event, 'Benin')"><img src="Flag_of_Benin.png" alt="Benin" height="25px" width="25px" onclick="openTab(event, 'Benin')"></button>
+            </td>
+            <td class="textOduduwa">
+              <span class="tablinks"></span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ذشضثلاذشتضهخءضث خيضعيعصضش &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+          </tr>
+        </table>
         <div class="text-input">
-          <div class="tab">
-            <button class="tablinks" onclick="openTab(event, 'Yoruba')" id="defaultOpen"><img src="Yorubaland.jpg" alt="Yoruba" height="15px" width="15px" onclick="openTab(event, 'Yoruba')"> Yoruba</button>
-            <button class="tablinks" onclick="openTab(event, 'Nigeria')"><img src="Flag_of_Nigeria.png" alt="Nigeria" height="15px" width="15px" onclick="openTab(event, 'Nigeria')"> Nigeria</button>
-            <button class="tablinks" onclick="openTab(event, 'Benin')"><img src="Flag_of_Benin.png" alt="Benin" height="15px" width="15px" onclick="openTab(event, 'Benin')"> Benin</button>
-          </div>
-          
           <div id="Yoruba" class="tabcontent">
             <textarea spellcheck="false" id="textarea1" class="from-text" placeholder="Yorùbá(Latin) &#10; Kí l’orúkọ ẹ &#10; Kí l’orúkɔ ɛ" onkeyup="transliterate()"></textarea>
           </div>
-          
           <div id="Nigeria" class="tabcontent">
             <textarea spellcheck="false" id="textarea1" class="from-text" placeholder="Yorùbá(Latin) Nigeria &#10; Kí l’orúkọ ẹ" onkeyup="transliterate()"></textarea>
           </div>
-          
           <div id="Benin" class="tabcontent">
             <textarea spellcheck="false" id="textarea1" class="from-text" placeholder="Yorùbá(Latin) Benin &#10; Kí l’orúkɔ ɛ" onkeyup="transliterate()"></textarea>
           </div>
-
           <div>
-            <textarea spellcheck="false" id="textarea2" readonly class="to-text" placeholder="ذشضثلاذشتضهخءضث خيضعيعصضش" onkeyup="transliterate()"></textarea>
+            <textarea spellcheck="false" id="textarea2" readonly class="to-text" placeholder="نضه مكخقضعنر ؤ" onkeyup="transliterate()"></textarea>
           </div>
         </div>
         <ul class="controls">
