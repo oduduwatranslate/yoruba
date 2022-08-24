@@ -232,7 +232,7 @@ body{
 /* Create an active/current tablink class */
 .tab button.active {
   cursor: pointer;
-  background-color: #ccc;
+  /*background-color: #ccc;*/
 }
 
 /* Style the tab content */
@@ -249,4 +249,8 @@ body{
 
 .widthOfTab {
   width: 50%;
+}
+
+.alignIcon {
+  text-align: center;
 }
