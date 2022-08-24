@@ -126,7 +126,13 @@
       }
 
       function copyContent1() {
-        navigator.clipboard.writeText(document.getElementById("textarea1").value)
+        if (localStorage.getItem("encoding") == "Nigeria") {
+          navigator.clipboard.writeText(document.getElementById("textareaNigeria").value)
+        } else if (localStorage.getItem("encoding") == "Benin") {
+          navigator.clipboard.writeText(document.getElementById("textareaBenin").value)
+        } else {
+          navigator.clipboard.writeText(document.getElementById("textarea1").value)
+        }
       }
 
       function copyContent2() {
