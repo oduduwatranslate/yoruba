@@ -43,7 +43,7 @@
         </table>
         <div class="text-input">
           <div id="Yoruba" class="tabcontent currentTab">
-            <textarea spellcheck="false" id="textarea1" class="from-text" placeholder="Yorùbá(Latin) &#10; Kí l’orúkọ ẹ &#10; Kí l’orúkɔ ɛ" onkeyup="transliterate()"></textarea>
+            <textarea spellcheck="false" id="textarea1" class="from-text" placeholder="Yorùbá(Latin) &#10;&#10; Kí l’orúkọ ẹ &#10; Kí l’orúkɔ ɛ" onkeyup="transliterate()"></textarea>
           </div>
           <!--div id="Nigeria" class="tabcontent currentTab">
             <textarea spellcheck="false" id="textareaNigeria" class="from-text" placeholder="Yorùbá(Latin) Nigeria &#10; Kí l’orúkọ ẹ" onkeyup="transliterate()"></textarea>
@@ -52,7 +52,7 @@
             <textarea spellcheck="false" id="textareaBenin" class="from-text" placeholder="Yorùbá(Latin) Benin &#10; Kí l’orúkɔ ɛ" onkeyup="transliterate()"></textarea>
           </div-->
           <div id="Oduduwa">
-            <textarea spellcheck="false" id="textarea2" readonly class="to-text" placeholder="نضه مكخقضعنر ؤ" dir="rtl" onkeyup="transliterate()"></textarea>
+            <textarea spellcheck="false" id="textarea2" readonly class="to-text" placeholder="ذشضثلاذشتضهخءضث خيضعيعصضش &#10;&#10; نذه مكخقذعنر ؤ" dir="rtl" onkeyup="transliterate()"></textarea>
           </div>
         </div>
         <ul class="controls">
@@ -148,7 +148,7 @@
 
       function transliterate() {
         if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined || localStorage.getItem("direction") == "latin2oduduwa") {
-          const yorubaToArabic = {"`":"ذ","q":"ض","w":"ص","e":"ث","r":"ق","t":"ف","y":"غ","u":"ع","i":"ه","o":"خ","p":"ح","a":"ش","s":"س","d":"ي","f":"ب","gb":"ء","g":"ل","h":"ا","j":"ت","k":"ن","l":"م","'":"ك","’":"ك",";":"ط","\\":"\\","\"":"'","z":"ئ","sh":"ئ","ṣ":"ئ","x":"ء","ɛ":"ؤ","ẹ":"ؤ","c":"ؤ","ɔ":"ر","ọ":"ر","v":"ر","b":"لا","n":"ى","m":"ة","Q":"ض","W":"ص","E":"ث","R":"ق","T":"ف","Y":"غ","U":"ع","I":"ه","O":"خ","P":"ح","A":"ش","S":"س","D":"ي","F":"ب","GB":"ء","Gb":"ء","G":"ل","H":"ا","J":"ت","K":"ن","L":"م","Z":"ئ","Sh":"ئ","Ṣ":"ئ","X":"ء","Ɛ":"ؤ","Ẹ":"ؤ","C":"ؤ","Ɔ":"ر","Ọ":"ر","V":"ر","B":"لا","N":"ى","M":"ة",",":"و",".":"ز","/":"ظ","<":",",">":".","?":"؟",":":":","1":"١","2":"٢","3":"٣","4":"٤","5":"٥","6":"٦","7":"٧","8":"٨","9":"٩","0":"٠"," ":" ","-":"-","á":"ذش","Á":"ذش","à":"ضش","À":"ضش","é":"ذث","É":"ذث","è":"ضث","È":"ضث","ẹ́":"ذؤ","Ẹ́":"ذؤ","ẹ̀":"ضؤ","Ẹ̀":"ضؤ","í":"ذه","Í":"ذه","ì":"ضه","Ì":"ضه","ń":"ذى","Ń":"ذى","ǹ":"ضى","Ǹ":"ضى","ḿ":"ذة","Ḿ":"ذة","m̀":"ضة","M̀":"ضة","ó":"ذخ","Ó":"ذخ","ò":"ضخ","Ò":"ضخ","ọ́":"ذر","Ọ́":"ذر","ọ̀":"ضر","Ọ̀":"ضر","ú":"ذع","Ú":"ذع","ù":"ضع","Ù":"ضع","=":"=","+":"+","-":"-","÷":"÷","×":"×","(":"(",")":")"};
+          const yorubaToArabic = {"q":"ذ","`":"ض","w":"ص","e":"ث","r":"ق","t":"ف","y":"غ","u":"ع","i":"ه","o":"خ","p":"ح","a":"ش","s":"س","d":"ي","f":"ب","gb":"ء","g":"ل","h":"ا","j":"ت","k":"ن","l":"م","'":"ك","’":"ك",";":"ط","\\":"\\","\"":"'","z":"ئ","sh":"ئ","ṣ":"ئ","x":"ء","ɛ":"ؤ","ẹ":"ؤ","c":"ؤ","ɔ":"ر","ọ":"ر","v":"ر","b":"لا","n":"ى","m":"ة","Q":"ذ","W":"ص","E":"ث","R":"ق","T":"ف","Y":"غ","U":"ع","I":"ه","O":"خ","P":"ح","A":"ش","S":"س","D":"ي","F":"ب","GB":"ء","Gb":"ء","G":"ل","H":"ا","J":"ت","K":"ن","L":"م","Z":"ئ","Sh":"ئ","Ṣ":"ئ","X":"ء","Ɛ":"ؤ","Ẹ":"ؤ","C":"ؤ","Ɔ":"ر","Ọ":"ر","V":"ر","B":"لا","N":"ى","M":"ة",",":"و",".":"ز","/":"ظ","<":",",">":".","?":"؟",":":":","1":"١","2":"٢","3":"٣","4":"٤","5":"٥","6":"٦","7":"٧","8":"٨","9":"٩","0":"٠"," ":" ","-":"-","á":"ذش","Á":"ذش","à":"ضش","À":"ضش","é":"ذث","É":"ذث","è":"ضث","È":"ضث","ẹ́":"ذؤ","Ẹ́":"ذؤ","ẹ̀":"ضؤ","Ẹ̀":"ضؤ","í":"ذه","Í":"ذه","ì":"ضه","Ì":"ضه","ń":"ذى","Ń":"ذى","ǹ":"ضى","Ǹ":"ضى","ḿ":"ذة","Ḿ":"ذة","m̀":"ضة","M̀":"ضة","ó":"ذخ","Ó":"ذخ","ò":"ضخ","Ò":"ضخ","ọ́":"ذر","Ọ́":"ذر","ọ̀":"ضر","Ọ̀":"ضر","ú":"ذع","Ú":"ذع","ù":"ضع","Ù":"ضع","=":"=","+":"+","-":"-","÷":"÷","×":"×","(":"(",")":")"};
           const middleTone = {"ā":"a","Ā":"a","ē":"e","Ē":"e","ẹ̄":"ẹ","Ẹ̄":"ẹ","ī":"i","Ī":"ī","n̄":"n","N̄":"n","N̄":"n","m̄":"m","M̄":"m","ō":"o","Ō":"o","ọ̄":"ọ","Ọ̄":"ọ","ū":"u","Ū":"u"};
 
           let textYo = document.getElementById("textarea1").value;
@@ -166,13 +166,13 @@
             else if (textYo[u].toLowerCase().indexOf("h") > -1 && textYo[(u-1)] && textYo[(u-1)].toLowerCase() == "s")
               resultAr = resultAr.slice(0, -1) + yorubaToArabic["sh"];
             else if (textYo[(u+1)] && (textYo[(u+1)].indexOf("`") > -1 || textYo[(u+1)].indexOf("̀") > -1))
-              resultAr = resultAr + yorubaToArabic["`"] + yorubaToArabic[textYo[u]];
+              resultAr = resultAr + yorubaToArabic[textYo[u]];
             else if (textYo[u].indexOf("◌̀") > -1)
-              resultAr = resultAr + yorubaToArabic["`"] + yorubaToArabic[textYo[u]];
+              resultAr = resultAr + yorubaToArabic["q"] + yorubaToArabic[textYo[u]];
             else if (textYo[u].indexOf("◌́") > -1)
-              resultAr = resultAr + yorubaToArabic["q"] + yorubaToArabic[textYo[u]];
+              resultAr = resultAr + yorubaToArabic["`"] + yorubaToArabic[textYo[u]];
             else if (textYo[(u+1)] && (textYo[(u+1)].indexOf("´") > -1 || textYo[(u+1)].indexOf("́") > -1))
-              resultAr = resultAr + yorubaToArabic["q"] + yorubaToArabic[textYo[u]];
+              resultAr = resultAr + yorubaToArabic[textYo[u]];
             else if (textYo[(u)].indexOf("\n") > -1)
               resultAr = resultAr + "\n";
             else if (textYo[u].indexOf("̄") > -1)
