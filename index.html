@@ -27,16 +27,16 @@
       <div class="wrapper">
         <table class="tab">
           <tr>
-            <td>
+            <td class="widthOfTab">
               <button class="tablinks" onclick="openTab(event, 'Yoruba')" id="defaultOpen"><img src="icon.png" alt="Yoruba" height="30px" width="25px" onclick="openTab(event, 'Yoruba')"></button>
             </td>
-            <td>
+            <!--td>
               <button class="tablinks" onclick="openTab(event, 'Nigeria')"><img src="Flag_of_Nigeria.png" alt="Nigeria" height="25px" width="35px" onclick="openTab(event, 'Nigeria')"></button>
             </td>
             <td>
               <button class="tablinks" onclick="openTab(event, 'Benin')"><img src="Flag_of_Benin.png" alt="Benin" height="25px" width="35px" onclick="openTab(event, 'Benin')"></button>
-            </td>
-            <td class="textOduduwa">
+            </td-->
+            <td class="widthOfTab textOduduwa">
               <span class="tablinks"></span>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ذشضثلاذشتضهخءضث خيضعيعصضش &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
@@ -46,12 +46,12 @@
           <div id="Yoruba" class="tabcontent currentTab">
             <textarea spellcheck="false" id="textarea1" class="from-text" placeholder="Yorùbá(Latin) &#10; Kí l’orúkọ ẹ &#10; Kí l’orúkɔ ɛ" onkeyup="transliterate()"></textarea>
           </div>
-          <div id="Nigeria" class="tabcontent currentTab">
+          <!--div id="Nigeria" class="tabcontent currentTab">
             <textarea spellcheck="false" id="textareaNigeria" class="from-text" placeholder="Yorùbá(Latin) Nigeria &#10; Kí l’orúkọ ẹ" onkeyup="transliterate()"></textarea>
           </div>
           <div id="Benin" class="tabcontent currentTab">
             <textarea spellcheck="false" id="textareaBenin" class="from-text" placeholder="Yorùbá(Latin) Benin &#10; Kí l’orúkɔ ɛ" onkeyup="transliterate()"></textarea>
-          </div>
+          </div-->
           <div id="Oduduwa">
             <textarea spellcheck="false" id="textarea2" readonly class="to-text" placeholder="نضه مكخقضعنر ؤ" dir="rtl" onkeyup="transliterate()"></textarea>
           </div>
@@ -104,43 +104,43 @@
         if (localStorage.getItem("direction") == null || localStorage.getItem("direction") == undefined ||  localStorage.getItem("direction") == "latin2oduduwa") {
           localStorage.setItem("direction", "oduduwa2latin");
           document.getElementById("textarea1").readOnly = true; 
-          document.getElementById("textareaNigeria").readOnly = true; 
-          document.getElementById("textareaBenin").readOnly = true; 
+          //document.getElementById("textareaNigeria").readOnly = true; 
+          //document.getElementById("textareaBenin").readOnly = true; 
           document.getElementById('textarea2').removeAttribute('readonly');
           document.getElementById("textarea2").focus();
           document.getElementById("Oduduwa").classList.add("currentTab");
           document.getElementById("Yoruba").classList.remove("currentTab");
-          document.getElementById("Nigeria").classList.remove("currentTab");
-          document.getElementById("Benin").classList.remove("currentTab");
+          //document.getElementById("Nigeria").classList.remove("currentTab");
+          //document.getElementById("Benin").classList.remove("currentTab");
           //document.getElementById("swapTooltip").value = "ذشضثلاذشتضهخءضث خيضعيعصضش -> Yorùbá(Latin)";
         } else if (localStorage.getItem("direction") == "oduduwa2latin") {
           localStorage.setItem("direction", "latin2oduduwa");
           document.getElementById('textarea1').removeAttribute('readonly');
-          document.getElementById('textareaNigeria').removeAttribute('readonly');
-          document.getElementById('textareaBenin').removeAttribute('readonly');
+          //document.getElementById('textareaNigeria').removeAttribute('readonly');
+          //document.getElementById('textareaBenin').removeAttribute('readonly');
           document.getElementById("textarea2").readOnly = true;
           if (localStorage.getItem("encoding") == "Yoruba")
             document.getElementById("textarea1").focus();
-          else if (localStorage.getItem("encoding") == "Nigeria")
+          /*else if (localStorage.getItem("encoding") == "Nigeria")
             document.getElementById("textareaNigeria").focus();
           else if (localStorage.getItem("encoding") == "Benin")
-            document.getElementById("textareaBenin").focus();
+            document.getElementById("textareaBenin").focus();*/
           document.getElementById("Oduduwa").classList.remove("currentTab");
           document.getElementById("Yoruba").classList.add("currentTab");
-          document.getElementById("Nigeria").classList.add("currentTab");
-          document.getElementById("Benin").classList.add("currentTab");
+          //document.getElementById("Nigeria").classList.add("currentTab");
+          //document.getElementById("Benin").classList.add("currentTab");
           //document.getElementById("swapTooltip").value = "Yorùbá(Latin) -> ذشضثلاذشتضهخءضث خيضعيعصضش";
         }
       }
 
       function copyContent1() {
-        if (localStorage.getItem("encoding") == "Nigeria") {
+        /*if (localStorage.getItem("encoding") == "Nigeria") {
           navigator.clipboard.writeText(document.getElementById("textareaNigeria").value)
         } else if (localStorage.getItem("encoding") == "Benin") {
           navigator.clipboard.writeText(document.getElementById("textareaBenin").value)
-        } else {
+        } else {*/
           navigator.clipboard.writeText(document.getElementById("textarea1").value)
-        }
+        //}
       }
 
       function copyContent2() {
@@ -153,10 +153,10 @@
           const middleTone = {"ā":"a","Ā":"a","ē":"e","Ē":"e","ẹ̄":"ẹ","Ẹ̄":"ẹ","ī":"i","Ī":"ī","n̄":"n","N̄":"n","N̄":"n","m̄":"m","M̄":"m","ō":"o","Ō":"o","ọ̄":"ọ","Ọ̄":"ọ","ū":"u","Ū":"u"};
 
           let textYo = document.getElementById("textarea1").value;
-          if (localStorage.getItem("encoding") == "Nigeria")
+          /*if (localStorage.getItem("encoding") == "Nigeria")
             textYo = document.getElementById("textareaNigeria").value;
           else if (localStorage.getItem("encoding") == "Benin")
-            textYo = document.getElementById("textareaBenin").value;
+            textYo = document.getElementById("textareaBenin").value;*/
           let resultAr = "";
           for (let u = 0; u < textYo.length; u++ ) {
             // Middle Tone convert to normal character
@@ -199,9 +199,9 @@
           };
           var arabicToYoruba = {"٠":"0","𞥐":"0","١":"1","𞥑":"1","٢":"2","𞥒":"2","٣":"3","𞥓":"3","٤":"4","𞥔":"4","٥":"5","𞥕":"5","٦":"6","𞥖":"6","٧":"7","𞥗":"7","٨":"8","𞥘":"8","٩":"9","𞥙":"9","ذ":"◌̀","ض":"◌́","ص":"w","ث":"e","ق":"r","ف":"t","غ":"y","ع":"u","ه":"i","خ":"o","ح":"p","ش":"a","س":"s","ي":"d","ب":"f","ل":"g","ا":"h","ت":"j","ن":"k","م":"l","ك":"'","ط":";","'":"\"","ئ":"ṣ","ء":"gb","ؤ":"ẹ","ر":"ọ","لا":"b","ى":"n","ة":"m","و":",","ز":".","ظ":"/",",":"<",".":">","؟":"?",":":":"," ":" ","=":"=","+":"+","-":"-","÷":"÷","×":"×","(":"(",")":")"};
 
-          if (localStorage.getItem("encoding") == "Benin") {
+          /*if (localStorage.getItem("encoding") == "Benin") {
             arabicToYoruba = {"٠":"0","𞥐":"0","١":"1","𞥑":"1","٢":"2","𞥒":"2","٣":"3","𞥓":"3","٤":"4","𞥔":"4","٥":"5","𞥕":"5","٦":"6","𞥖":"6","٧":"7","𞥗":"7","٨":"8","𞥘":"8","٩":"9","𞥙":"9","ذ":"◌̀","ض":"◌́","ص":"w","ث":"e","ق":"r","ف":"t","غ":"y","ع":"u","ه":"i","خ":"o","ح":"p","ش":"a","س":"s","ي":"d","ب":"f","ل":"g","ا":"h","ت":"j","ن":"k","م":"l","ك":"'","ط":";","'":"\"","ئ":"sh","ء":"gb","ؤ":"ɛ","ر":"ɔ","لا":"b","ى":"n","ة":"m","و":",","ز":".","ظ":"/",",":"<",".":">","؟":"?",":":":"," ":" ","=":"=","+":"+","-":"-","÷":"÷","×":"×","(":"(",")":")"};
-          }
+          }*/
 
           let resultYo = "";
           let textAr = document.getElementById("textarea2").value;
@@ -225,13 +225,13 @@
           }
           document.getElementById("textarea1").value = resultYo;
           document.getElementById("textarea1").innerHTML = resultYo;
-          if (localStorage.getItem("encoding") == "Nigeria") {
+          /*if (localStorage.getItem("encoding") == "Nigeria") {
             document.getElementById("textareaNigeria").value = resultYo;
             document.getElementById("textareaNigeria").innerHTML = resultYo;
           } else if (localStorage.getItem("encoding") == "Benin") {
             document.getElementById("textareaBenin").value = resultYo;
             document.getElementById("textareaBenin").innerHTML = resultYo;
-          }
+          }*/
         }        
       }
 
