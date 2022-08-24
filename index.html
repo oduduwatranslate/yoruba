@@ -115,7 +115,7 @@
           document.getElementById("Yoruba").classList.remove("currentTab");
           //document.getElementById("Nigeria").classList.remove("currentTab");
           //document.getElementById("Benin").classList.remove("currentTab");
-          //document.getElementById("swapTooltip").value = "ذشضثلاذشتضهخءضث خيضعيعصضش -> Yorùbá(Latin)";
+          document.getElementsByClassName("footerOfPage")[0].style = "display:none";
         } else if (localStorage.getItem("direction") == "oduduwa2latin") {
           localStorage.setItem("direction", "latin2oduduwa");
           document.getElementById('textarea1').removeAttribute('readonly');
@@ -132,7 +132,7 @@
           document.getElementById("Yoruba").classList.add("currentTab");
           //document.getElementById("Nigeria").classList.add("currentTab");
           //document.getElementById("Benin").classList.add("currentTab");
-          //document.getElementById("swapTooltip").value = "Yorùbá(Latin) -> ذشضثلاذشتضهخءضث خيضعيعصضش";
+          document.getElementsByClassName("footerOfPage")[0].style = "display:none";
         }
       }
 
