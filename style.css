@@ -20,7 +20,7 @@ body{
   justify-content: center;
   padding: 0 10px;
   min-height: 100vh;
-  background: #5372F0;
+  background: #f2b92a;
 }
 .container{
   max-width: 750px;
@@ -241,4 +241,8 @@ body{
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+}
+
+.currentTab {
+  border: 2px solid black;
 }
