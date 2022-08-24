@@ -43,7 +43,7 @@
         </table>
         <div class="text-input">
           <div id="Yoruba" class="tabcontent currentTab">
-            <textarea spellcheck="false" id="textarea1" class="from-text" placeholder="Yorùbá(Latin) &#10;&#10; Kí l’orúkọ ẹ &#10; Kí l’orúkɔ ɛ" onkeyup="transliterate()"></textarea>
+            <textarea spellcheck="false" id="textarea1" class="from-text" placeholder="Yorùbá(Latin) &#10;&#10; Kí l’orúkọ ẹ &#10; Kí l’orúkɔ ɛ" onkeyup="transliterate()" onclick="clearFooter()"></textarea>
           </div>
           <!--div id="Nigeria" class="tabcontent currentTab">
             <textarea spellcheck="false" id="textareaNigeria" class="from-text" placeholder="Yorùbá(Latin) Nigeria &#10; Kí l’orúkọ ẹ" onkeyup="transliterate()"></textarea>
@@ -115,7 +115,7 @@
           document.getElementById("Yoruba").classList.remove("currentTab");
           //document.getElementById("Nigeria").classList.remove("currentTab");
           //document.getElementById("Benin").classList.remove("currentTab");
-          document.getElementsByClassName("footerOfPage")[0].style = "display:none";
+          clearFooter();
         } else if (localStorage.getItem("direction") == "oduduwa2latin") {
           localStorage.setItem("direction", "latin2oduduwa");
           document.getElementById('textarea1').removeAttribute('readonly');
@@ -132,8 +132,12 @@
           document.getElementById("Yoruba").classList.add("currentTab");
           //document.getElementById("Nigeria").classList.add("currentTab");
           //document.getElementById("Benin").classList.add("currentTab");
-          document.getElementsByClassName("footerOfPage")[0].style = "display:none";
+          clearFooter();
         }
+      }
+
+      function clearFooter() {
+        document.getElementsByClassName("footerOfPage")[0].style = "display:none";
       }
 
       function copyContent1() {
