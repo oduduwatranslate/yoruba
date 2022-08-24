@@ -246,3 +246,7 @@ body{
 .currentTab {
   border: 2px solid black;
 }
+
+.widthOfTab {
+  width: 50%;
+}
