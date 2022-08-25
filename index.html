@@ -180,13 +180,13 @@
             else if (textYo[u].toLowerCase().indexOf("h") > -1 && textYo[(u-1)] && textYo[(u-1)].toLowerCase() == "s")
               resultAr = resultAr.slice(0, -1) + yorubaToArabic["sh"];
             else if (textYo[(u+1)] && (textYo[(u+1)].indexOf("`") > -1 || textYo[(u+1)].indexOf("̀") > -1) && yorubaToArabic[textYo[u]])
-              resultAr = resultAr + yorubaToArabic[textYo[u]];
+              resultAr = resultAr + yorubaToArabic["`"] + yorubaToArabic[textYo[u]];
             else if (textYo[u].indexOf("◌̀") > -1)
               resultAr = resultAr + yorubaToArabic["q"] + yorubaToArabic[textYo[u]];
             else if (textYo[u].indexOf("◌́") > -1)
               resultAr = resultAr + yorubaToArabic["`"] + yorubaToArabic[textYo[u]];
             else if (textYo[(u+1)] && (textYo[(u+1)].indexOf("´") > -1 || textYo[(u+1)].indexOf("́") > -1) && yorubaToArabic[textYo[u]])
-              resultAr = resultAr + yorubaToArabic[textYo[u]];
+              resultAr = resultAr + yorubaToArabic["q"] + yorubaToArabic[textYo[u]];
             else if (textYo[(u)].indexOf("\n") > -1)
               resultAr = resultAr + "\n";
             else if (textYo[u].indexOf("̄") > -1)
